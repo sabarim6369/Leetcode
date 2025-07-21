@@ -1,14 +1,15 @@
 class Solution {
 public:
     vector<int> searchRange(vector<int>& nums, int target) {
-        int minin=INT_MAX;
-        int maxindex=INT_MIN;
-        for(int i=0;i<nums.size();i++){
-            if(nums[i]==target){
-                minin=min(i,minin);
-                maxindex=max(maxindex,i);
-            }
-        }
-        return {minin==INT_MAX?-1:minin,maxindex==INT_MIN?-1:maxindex};
+      auto first=lower_bound(nums.begin(),nums.end(),target);
+      auto second=upper_bound(nums.begin(),nums.end(),target);
+      if(first==nums.end() || *first!=target){
+        return {-1,-1};
+      }
+      int start=first-nums.begin();
+      int end=second-nums.begin()-1;
+      return {start,end};
+      
+      return {};
     }
 };
