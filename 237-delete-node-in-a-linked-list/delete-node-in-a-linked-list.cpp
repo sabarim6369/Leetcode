@@ -9,10 +9,8 @@
 class Solution {
 public:
     void deleteNode(ListNode* node) {
-        struct ListNode *temp=node->next;
-        int value=temp->val;
-        node->val=value;
-        node->next=temp->next;
+      node->val=node->next->val;
+      node->next=node->next->next;
 
         
     }
