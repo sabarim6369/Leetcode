@@ -8,13 +8,13 @@ public:
             if(currsum+a>mid){
                 currsum=a;
                 count++;
-                if(count>k)return false;
+                
             }
             else{
                 currsum+=a;
             }
         }
-        return true;
+        return count<=k;
     }
     int splitArray(vector<int>& nums, int k) {
         int left=*max_element(nums.begin(),nums.end());
