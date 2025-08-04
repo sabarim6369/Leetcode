@@ -11,27 +11,34 @@
  */
 class Solution {
 public:
-    int countNodes(TreeNode* root) {
-        if(!root)return 0;
-        queue<TreeNode*>q;
-        q.push(root);
+    int countleft(TreeNode *node){
+        if(!node)return 0;
         int count=0;
-        while(!q.empty()){
-            int size=q.size();
-            for(int i=0;i<size;i++){
-                TreeNode *curr=q.front();
-                q.pop();
-                count++;
-                if(curr->left){
-                    q.push(curr->left);
-                }
-                if(curr->right){
-                    q.push(curr->right);
-                }
-            }
-
+        while(node){
+            count++;
+            node=node->left;
         }
         return count;
+
+    }
+    int countright(TreeNode* node){
+        if(!node)return 0;
+        int count=0;
+        while(node){
+            count++;
+            node=node->right;
+        }
+        return count;
+
+    }
+    int countNodes(TreeNode* root) {
+        if(!root)return 0;
+        int leftheight=countleft(root);
+        int rightheight=countright(root);
+        if(leftheight==rightheight){
+            return (1<<leftheight)-1;
+        }
+        return 1+countNodes(root->left)+countNodes(root->right);
         
     }
 };
