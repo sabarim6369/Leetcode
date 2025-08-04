@@ -33,8 +33,8 @@ public:
     }
     int countNodes(TreeNode* root) {
         if(!root)return 0;
-        int leftheight=countleft(root);
-        int rightheight=countright(root);
+        int leftheight=countleft(root->left)+1;
+        int rightheight=countright(root->right)+1;
         if(leftheight==rightheight){
             return (1<<leftheight)-1;
         }
