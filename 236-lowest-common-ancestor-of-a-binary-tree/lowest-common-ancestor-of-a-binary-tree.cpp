@@ -28,19 +28,9 @@ public:
         TreeNode* curr1 = root;
         TreeNode* curr2 = root;
         findpath(v1, curr1, p);
-        findpath(v2, curr2, q);
-        
+        findpath(v2, curr2, q); 
         int n1 = v1.size();
         int n2 = v2.size();
-         for(auto a:v1){
-            cout<<a->val<<"->";
-         }
-         cout<<endl;
-          for(auto a:v2){
-            cout<<a->val<<"->";
-
-         }
-        
          TreeNode* ans=nullptr;
          int i=0,j=0;
          while(i<n1 && j<n2 && v1[i]==v2[j]){
